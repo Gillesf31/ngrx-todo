@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-title>Edit a todo</mat-card-title>
+    <mat-card-content>
+        <form *ngIf="viewTodo$ | async;" [formGroup]="updateTodoForm" (ngSubmit)="updateTodo(updateTodoForm.value)">
+            <mat-form-field>
+                <input matInput formControlName="title" placeholder="Title">
+            </mat-form-field>
+            <mat-checkbox labelPosition="before" color="primary" formControlName="done" class="add-checkbox"></mat-checkbox>
+            <button mat-raised-button color="primary">Update</button>
+        </form>
+    </mat-card-content>
+</mat-card>

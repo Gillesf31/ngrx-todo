@@ -5,18 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { REDUCER_TOKEN, getReducers } from './store';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { MaterialModule } from '../material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'; // Angular CLI environemnt
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(REDUCER_TOKEN)
+    StoreModule.forRoot(REDUCER_TOKEN),
+    MaterialModule,
+    NoopAnimationsModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {

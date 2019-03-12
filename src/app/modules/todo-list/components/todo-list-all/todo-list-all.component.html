@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>List of all todos :</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="todoForm" (ngSubmit)="addTodo(todoForm.value)">
+      <mat-form-field>
+        <input matInput formControlName="title" placeholder="Title">
+      </mat-form-field>
+      <mat-checkbox labelPosition="before" color="primary" formControlName="done" class="add-checkbox"></mat-checkbox>
+      <button mat-raised-button color="primary">Add</button>
+    </form>
+    <mat-list>
+      <mat-list-item *ngFor="let todo of todos$ | async" class="list-item">
+        <mat-checkbox (change)="updateTodoStateDone(todo)" labelPosition="after" color="primary" [ngModel]="todo.done"><span [ngClass]="todo.done ? 'done':'not-done'">{{ todo.title }}</span></mat-checkbox>
+        <button mat-raised-button color="primary" (click)="viewTodo(todo)">Edit</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+ 
+body {
+    background: #f5f5f5;
+}
+
+.mat-checkbox-label, .add-checkbox {
+    padding-right: 15px;
+}
+
+.done {
+    color: grey;
+    text-decoration: line-through;
+}
